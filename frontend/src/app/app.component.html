@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" [routerLink] = "['home']" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink] = "['register']" routerLinkActive = "active">Register</a>
@@ -14,43 +14,23 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink] = "['login']" routerLinkActive = "active">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Your Card Sets</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">Your cards</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink] = "['table']" >All cards</a></li>
+            <li><a class="dropdown-item" href="#">Learn cards</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="bi bi-info-circle nav-link" [routerLink] = "['video']" style="font-size:18px; color: lightcoral;"
              data-bs-toggle="tooltip" data-bs-placement="bottom" title="How to use"></a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Find your cards">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<div
-  class="p-5 text-center bg-image"
-  style="
-      background-image: url('./assets/img/thought-catalog-505eectW54k-unsplash.jpg');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      height: 100%;
-    "
->
-  <div class="mask"
-       style="
-       background-color: rgba(0, 0, 0, 0.6);
-       height: 75%;
-      "
-  >
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-white">
-        <h1 class="mb-3">Welcome to Flashcards:</h1>
-        <a class="btn btn-outline-light btn-lg" href="#" role="button">Create your cards</a>
+      <div class="container-fluid" style="position: absolute; left: 700px" >
+        <span style="font-family: 'Kalam', cursive; font-size: 30px">Master every subject</span>
       </div>
     </div>
   </div>
-</div>
+</nav>
 <router-outlet></router-outlet>

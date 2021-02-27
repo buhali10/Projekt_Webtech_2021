@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { VideoComponent } from './video/video.component';
+import { HomeComponent } from './home/home.component';
+import {YouTubePlayerModule} from "@angular/youtube-player";
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import { VideoComponent } from './video/video.component';
     LoginComponent,
     RegisterComponent,
     VideoComponent,
+    HomeComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { VideoComponent } from './video/video.component';
     MatIconModule,
     MatListModule,
     ReactiveFormsModule,
+    YouTubePlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
