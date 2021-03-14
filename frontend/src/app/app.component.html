@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,16 +19,16 @@
              data-bs-toggle="dropdown" aria-expanded="false">Your cards</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" [routerLink] = "['table']" >All cards</a></li>
-            <li><a class="dropdown-item" href="#">Learn cards</a></li>
+            <li><a class="dropdown-item" [routerLink] = "['card']">Learn cards</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="bi bi-info-circle nav-link" [routerLink] = "['video']" style="font-size:18px; color: lightcoral;"
+          <a class="bi bi-info-circle nav-link text-primary" [routerLink] = "['video']" style="font-size:18px; color: lightcoral;"
              data-bs-toggle="tooltip" data-bs-placement="bottom" title="How to use"></a>
         </li>
       </ul>
-      <div class="container-fluid" style="position: absolute; left: 700px" >
-        <span style="font-family: 'Kalam', cursive; font-size: 30px">Master every subject</span>
+      <div class="container-fluid" style="text-align: right">
+        <span style="font-family: 'Kalam', cursive; font-size: 30px;">Master every subject</span>
       </div>
     </div>
   </div>

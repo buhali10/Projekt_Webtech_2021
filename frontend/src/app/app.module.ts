@@ -10,13 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { VideoComponent } from './video/video.component';
-import { HomeComponent } from './home/home.component';
+import { VideoComponent } from './components/video/video.component';
+import { HomeComponent } from './components/home/home.component';
 import {YouTubePlayerModule} from "@angular/youtube-player";
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './components/table/table.component';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TableComponent } from './table/table.component';
     VideoComponent,
     HomeComponent,
     TableComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
