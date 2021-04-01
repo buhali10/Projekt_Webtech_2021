@@ -5,7 +5,7 @@ const CARDS = function(card) {
     this.front = card.front;
     this.back = card.back;
     this.setname = card.setname;
-    this.note = card.note;
+    this.notes = card.notes;
 };
 
 CARDS.create = (newCard, result) => {
@@ -55,8 +55,8 @@ CARDS.getAll = result => {
 
 CARDS.updateById = (id, card, result) => {
     sql.query(
-        "UPDATE cards SET front = ?, back = ?, setname = ?, note = ? WHERE id = ?",
-        [card.front, card.back, card.setname, card.note , id],
+        "UPDATE cards SET front = ?, back = ?, setname = ?, notes = ? WHERE id = ?",
+        [card.front, card.back,card.setname,card.notes, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);

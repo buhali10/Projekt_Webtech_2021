@@ -10,21 +10,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { VideoComponent } from './components/video/video.component';
 import { HomeComponent } from './components/home/home.component';
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import { TableComponent } from './components/table/table.component';
 import { CardComponent } from './components/card/card.component';
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     VideoComponent,
     HomeComponent,
     TableComponent,
@@ -33,6 +32,7 @@ import { CardComponent } from './components/card/card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
     LayoutModule,
@@ -43,6 +43,8 @@ import { CardComponent } from './components/card/card.component';
     MatListModule,
     ReactiveFormsModule,
     YouTubePlayerModule,
+    CommonModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

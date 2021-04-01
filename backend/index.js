@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
+
 // simple route
-app.get("/", (req, res) => {
+app.get("/",cors(), (req, res) => {
     res.send('Welcome to Infinitus!');
 });
 

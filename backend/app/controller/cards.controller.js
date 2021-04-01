@@ -59,15 +59,10 @@ exports.findOne = (req, res) => {
 // Update a Card identified by the cardId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if (!req.body) {
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
-    }
 
     Cards.updateById(
         req.params.cardId,
-        new Cards(req.body),
+        new Cards(res.body),
         (err, data) => {
             if (err) {
                 if (err.kind === "not_found") {
@@ -86,15 +81,15 @@ exports.update = (req, res) => {
 
 // Delete a card with the specified cardId in the request
 exports.delete = (req, res) => {
-    Cards.remove(req.params.cardId, (err, data) => {
+    Cards.remove(req.params.cardsId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found card with id ${req.params.cardId}.`
+                    message: `Not found card with id ${req.params.cardsId}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Could not delete card with id " + req.params.cardId
+                    message: "Could not delete card with id " + req.params.cardsId
                 });
             }
         } else res.send({ message: `Card was deleted successfully!` });
