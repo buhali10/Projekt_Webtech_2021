@@ -7,7 +7,6 @@ const CARDS = function(card) {
     this.setname = card.setname;
     this.notes = card.notes;
 };
-
 CARDS.create = (newCard, result) => {
     sql.query("INSERT INTO cards SET ?", newCard, (err, res) => {
         if (err) {
@@ -15,7 +14,6 @@ CARDS.create = (newCard, result) => {
             result(err, null);
             return;
         }
-
         console.log("created card: ", { id: res.insertId, ...newCard });
         result(null, { id: res.insertId, ...newCard });
     });
@@ -28,13 +26,11 @@ CARDS.findById = (cardId, result) => {
             result(err, null);
             return;
         }
-
         if (res.length) {
             console.log("found card: ", res[0]);
             result(null, res[0]);
             return;
         }
-
         // not found CARDS with the id
         result({ kind: "not_found" }, null);
     });
@@ -47,7 +43,6 @@ CARDS.getAll = result => {
             result(null, err);
             return;
         }
-
         console.log("cards: ", res);
         result(null, res);
     });
@@ -56,7 +51,7 @@ CARDS.getAll = result => {
 CARDS.updateById = (id, card, result) => {
     sql.query(
         "UPDATE cards SET front = ?, back = ?, setname = ?, notes = ? WHERE id = ?",
-        [card.front, card.back,card.setname,card.notes, id],
+        [card.front, card.back, card.setname, card.notes, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -65,7 +60,7 @@ CARDS.updateById = (id, card, result) => {
             }
 
             if (res.affectedRows == 0) {
-                // not found Customer with the id
+                // not found Card with the id
                 result({ kind: "not_found" }, null);
                 return;
             }
@@ -83,7 +78,6 @@ CARDS.remove = (id, result) => {
             result(null, err);
             return;
         }
-
         if (res.affectedRows == 0) {
             // not found CARDS with the id
             result({ kind: "not_found" }, null);
@@ -102,7 +96,6 @@ CARDS.removeAll = result => {
             result(null, err);
             return;
         }
-
         console.log(`deleted ${res.affectedRows} card`);
         result(null, res);
     });

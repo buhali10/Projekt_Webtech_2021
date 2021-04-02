@@ -14,7 +14,7 @@ module.exports = app => {
     app.put("/cards/:cardId", cards.update);
 
     // Delete the Card with cardId
-    app.delete("/cards/:cardsId", cards.delete);
+    app.delete("/cards/:cardId", cards.delete);
 
     // Delete all cards
     app.delete("/cards", cards.deleteAll);

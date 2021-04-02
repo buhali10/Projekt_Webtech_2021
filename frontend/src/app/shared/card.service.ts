@@ -13,21 +13,25 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   getAllCard(): Observable<Card[]>{
-    return this.http.get<Card[]>(this.baseUrl + 'cards').pipe()
+    return this.http.get<Card[]>(this.baseUrl + 'cards');
   }
 
-  deleteCard(id : number): any{
-    return this.http.delete(this.baseUrl + 'cards/' + id).pipe()
+  deleteCard(id : number): void{
+    this.http.delete(this.baseUrl + 'cards/' + id).subscribe()
   }
 
   updateCard(id: number, card: Card): any{
-    return this.http.put(this.baseUrl + 'cards/' + id,card).subscribe()
+    return this.http.put(this.baseUrl + 'cards/' + id,card).pipe()
   }
+
 
   getCardById(id:number): Observable<Card>{
-    return this.http.get<Card>(this.baseUrl + 'cards/' + id).pipe()
+    return this.http.get<Card>(this.baseUrl + 'cards/' + id)
   }
 
+  create(card: Card): void {
+    this.http.post<Card>(this.baseUrl, card).subscribe();
+  }
 
 
 

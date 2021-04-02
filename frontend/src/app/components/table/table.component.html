@@ -33,7 +33,7 @@
       <td>{{card.setname}}</td>
       <td>{{card.notes}}</td>
       <td><i class="bi bi-pencil text-secondary" (click)="updateOne(card.id,createContent)"></i></td>
-      <td><i class="bi bi-trash text-secondary" (click)="deleteOne(card.id)"></i></td>
+      <td><i class="bi bi-trash text-secondary" (click)="openDelete(deleteContent,card.id)"></i></td>
     </tr>
     </tbody>
   </table>
@@ -52,7 +52,7 @@
     <i class="bi bi-x" style="font-size: 40px" (click)="modal.close()"></i>
   </div>
   <div class="modal-body">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form">
       <div class="form-group">
         <label for="frontContent">Card Front</label>
         <input type="text" class="form-control" id="frontContent" formControlName="frontControl">
@@ -74,29 +74,23 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary" (click)="onCreate()">Create</button>
+    <button type="button" class="btn btn-outline-success" (click)="onCreate()">Create</button>
     <button type="button" class="btn btn-outline-primary" (click)="onSave()">Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('cancel')">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancel</button>
   </div>
 </ng-template>
 
 <!--Modal für die Bestätigung beim Löschen einer Karte-->
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+<ng-template #deleteContent let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title2" style="color: dodgerblue">YOUR CARD</h2>
+    <i class="bi bi-x" style="font-size: 40px" (click)="modal.close()"></i>
+  </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this card</p>
+        <p>Are you sure you want to delete this card?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger">Yes</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteOne(card.id)">Yes</button>
+        <button type="button" class="btn btn-dark">Close</button>
       </div>
-    </div>
-  </div>
-</div>
+</ng-template>

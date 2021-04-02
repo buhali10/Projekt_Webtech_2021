@@ -5,6 +5,7 @@ import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-table',
@@ -23,6 +24,8 @@ export class TableComponent implements OnInit {
     private modalService: NgbModal,
     private config: NgbModalConfig,
     private fb: FormBuilder,
+    private router: Router,
+
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -58,10 +61,7 @@ export class TableComponent implements OnInit {
   }
   deleteOne(id: number){
     console.log("Test");
-    this.service.deleteCard(id).subscribe(() =>
-    {
-       this.getTable();
-    })
+    this.service.deleteCard(id);
   }
 
   updateOne(id:number, content: any){
@@ -80,12 +80,21 @@ export class TableComponent implements OnInit {
         noteControl: card.notes
       });
     })
-
+  }
+  readOne(id: number): void {
+    this.service.getCardById(id).subscribe(
+      (res: Card) => this.card = res,
+    );
   }
 
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).
-    result.then((result) => {},)
+
+  openDelete(content:any, id: number): void {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        if (result === 'delete')
+        {
+          this.deleteOne(this.card?.id);
+        }
+      });
     this.form.patchValue({
       frontControl: '',
       backControl: '',
@@ -95,6 +104,12 @@ export class TableComponent implements OnInit {
   }
 
   onCreate(){
+    const values = this.form.value;
+    this.card.front = values.frontControl;
+    this.card.back = values.backControl;
+    this.card.setname = values.nameControl;
+    this.card.notes = values.noteControl;
+    this.service.create(this.card);
     this.modalService.dismissAll();
   }
 
@@ -112,7 +127,16 @@ export class TableComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).
+    result.then((result) => {},)
+    this.form.patchValue({
+      frontControl: '',
+      backControl: '',
+      nameControl: '',
+      noteControl: ''
+    });
+  }
 
 
 }
