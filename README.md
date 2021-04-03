@@ -6,9 +6,10 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
 ## Technologies
  ***Flashcards Infinitus*** is created with 
 
- - [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2,
+ - [Angular CLI](https://github.com/angular/angular-cli) version **11.2.2**,
   
- - [NodeJS](https://github.com/nodejs/node) version 12.18.4 and 
+ - [NodeJS](https://github.com/nodejs/node) version **12.18.4** and 
+ - [Bootstrap](https://getbootstrap.com) version **v5.0.0-beta3**
  -  MySQL.
 
 ## Features
