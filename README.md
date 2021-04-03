@@ -10,7 +10,7 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
   
  - [NodeJS](https://github.com/nodejs/node) version **12.18.4**,
  - [Bootstrap](https://getbootstrap.com) version **v5.0.0-beta3** and
- -  MySQL.
+ - [MySQL](https://www.mysql.com)..
 
 ## Features
 
