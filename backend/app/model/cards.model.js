@@ -8,6 +8,7 @@ const CARDS = function(card) {
     this.notes = card.notes;
 };
 CARDS.create = (newCard, result) => {
+    console.log("INSERT INTO cards SET ?", newCard);
     sql.query("INSERT INTO cards SET ?", newCard, (err, res) => {
         if (err) {
             console.log("error: ", err);

@@ -1,3 +1,8 @@
 .modal-body .form-group{
   padding-bottom: 20px;
 }
+table{
+  table-layout: fixed;
+  over-flow: break-word;
+  width: 100%;
+}

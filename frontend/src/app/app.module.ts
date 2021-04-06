@@ -19,7 +19,7 @@ import { CardComponent } from './components/card/card.component';
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -29,23 +29,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TableComponent,
     CardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    ReactiveFormsModule,
-    YouTubePlayerModule,
-    CommonModule,
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        ReactiveFormsModule,
+        YouTubePlayerModule,
+        CommonModule,
+        NgbModule,
+        MatPaginatorModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

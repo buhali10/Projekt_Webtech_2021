@@ -2,20 +2,20 @@
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4" >
-      <div class="flipcard">
+      <div *ngIf="this.card" class="flipcard">
         <div class="flipcard-wrap border-primary">
-          <div class="card card-front text-primary" >
-            <div class="card-header">Set name</div>
-            <div class="card-body" >
-              <p>card front</p>
+          <div class="card card-front" >
+            <div class="card-header text-primary" >{{this.card.setname}}</div>
+            <div class="card-body">
+              <p>{{this.card.front}}</p>
             </div>
           </div>
           <div class="card card-back">
             <div class="card-body">
-              <p style="text-align: center">card back</p>
+              <p style="text-align: center">{{this.card.back}}</p>
             </div>
-            <div class="card-footer">
-              <p>Note: </p>
+            <div class="card-footer text-danger">
+              <p>Notes: {{this.card.notes}} </p>
             </div>
           </div>
         </div>
@@ -24,8 +24,8 @@
     <div class="col-lg-4"></div>
   </div>
   <div style="text-align: center">
-    <a href="#" style="font-size: 30px"><i class="bi bi-chevron-left"></i></a>
-    <a href="#" style="font-size: 30px"><i class="bi bi-chevron-right"></i></a>
+    <a style="font-size: 30px"><i class="bi bi-chevron-left" (click)="onLeft()"></i></a>
+    <a style="font-size: 30px"><i class="bi bi-chevron-right" (click)="onRight()"></i></a>
   </div>
 </div>
 

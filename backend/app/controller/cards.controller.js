@@ -14,7 +14,6 @@ exports.create = (req, res) => {
         setname: req.body.setname,
         notes: req.body.notes
     });
-
     // Save Card in the database
     Card.create(card, (err, data) => {
         if (err)

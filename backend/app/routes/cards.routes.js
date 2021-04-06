@@ -4,10 +4,10 @@ module.exports = app => {
     // Create a new Cards
     app.post("/cards", cards.create);
 
-    // GET all Cards
+    // Get all Cards
     app.get("/cards", cards.findAll);
 
-    // GET one single Cards with cardId
+    // Get one single Cards with cardId
     app.get("/cards/:cardId", cards.findOne);
 
     // Update one Card with cardId

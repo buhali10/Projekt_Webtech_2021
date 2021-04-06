@@ -1,23 +1,30 @@
 import {BackendService} from "../../shared/card.service";
 import {Card} from "../../shared/cards";
-import {Table} from "../../shared/table";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnInit, EventEmitter, AfterViewInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   table: Card[];
   updateEvent = new EventEmitter<Card[]>();
   form: FormGroup;
   card: Card;
+  dataSource:  MatTableDataSource<Card>;
+  searchString ="";
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.getTable();
+  }
 
   constructor(
     private service: BackendService,
@@ -37,39 +44,35 @@ export class TableComponent implements OnInit {
         nameControl: ['', Validators.required],
         noteControl: ['', Validators.required],
       })
+
+    this.card = { id: 0, front: '', back: '', setname: '', notes: ''};
   }
 
   ngOnInit(): void {
     this.getTable();
   }
 
-  onSubmit(): void {
-    const values = this.form.value;
-    this.card.front = values.frontControl;
-    this.card.back = values.backControl;
-    this.card.setname = values.nameControl;
-    this.card.notes = values.noteControl;
-    this.service.updateCard(this.card.id,this.card);
-  }
-
-
   getTable():void {
     this.service.getAllCard().subscribe((res) =>
     {
       this.table = res;
+      console.log(this.searchString)
+      this.table = this.table.filter(card => card.front.includes(this.searchString) || card.back.includes(this.searchString)
+        || card.setname.includes(this.searchString) || card.notes.includes(this.searchString));
+
     })
   }
-  deleteOne(id: number){
-    console.log("Test");
-    this.service.deleteCard(id);
+
+  deleteOne(id: number, content: any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.service.getCardById(id).subscribe(card =>
+    {
+      this.card = card
+    });
   }
 
   updateOne(id:number, content: any){
-    console.log("update succesfully");
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).
-    result.then(() => {
-      console.log(content)
-    },)
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
     this.service.getCardById(id).subscribe(card =>
     {
       this.card = card
@@ -81,20 +84,15 @@ export class TableComponent implements OnInit {
       });
     })
   }
+
   readOne(id: number): void {
     this.service.getCardById(id).subscribe(
       (res: Card) => this.card = res,
     );
   }
 
-
-  openDelete(content:any, id: number): void {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        if (result === 'delete')
-        {
-          this.deleteOne(this.card?.id);
-        }
-      });
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
     this.form.patchValue({
       frontControl: '',
       backControl: '',
@@ -109,7 +107,7 @@ export class TableComponent implements OnInit {
     this.card.back = values.backControl;
     this.card.setname = values.nameControl;
     this.card.notes = values.noteControl;
-    this.service.create(this.card);
+    this.service.create(this.card).subscribe( () => this.getTable());
     this.modalService.dismissAll();
   }
 
@@ -127,16 +125,15 @@ export class TableComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).
-    result.then((result) => {},)
-    this.form.patchValue({
-      frontControl: '',
-      backControl: '',
-      nameControl: '',
-      noteControl: ''
-    });
+  onDelete(id: number){
+    console.log(this.card)
+    this.service.deleteCard(id).subscribe(() => this.getTable());
+    this.modalService.dismissAll();
   }
 
+  applyFilter(event: any) {
+    this.searchString = event.target.value;
+    this.getTable()
+  }
 
 }

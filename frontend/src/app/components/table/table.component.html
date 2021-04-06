@@ -7,17 +7,15 @@
     <div class="col-md-6"></div>
     <div class="col-md-3">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Find your cards">
-        <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button"><i class="bi bi-search"></i></button>
-        </div>
+        <input type="text" class="form-control" placeholder="Find your cards" (keyup)="applyFilter($event)">
       </div>
     </div>
   </div>
 
-  <table class="table table-hover" style="text-align: center">
+  <table mat-table *ngIf="table" class="table table-hover" style="text-align: center">
     <thead class="thead-light">
     <tr style="text-align: center">
+      <th scope="col"> # </th>
       <th scope="col">Front Card</th>
       <th scope="col">Back Card</th>
       <th scope="col">Set</th>
@@ -27,23 +25,18 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let card of table">
+    <tr  *ngFor="let card of table; let i = index">
+      <td>{{ i+1 }}</td>
       <td>{{card.front}}</td>
       <td>{{card.back}}</td>
       <td>{{card.setname}}</td>
       <td>{{card.notes}}</td>
       <td><i class="bi bi-pencil text-secondary" (click)="updateOne(card.id,createContent)"></i></td>
-      <td><i class="bi bi-trash text-secondary" (click)="openDelete(deleteContent,card.id)"></i></td>
+      <td><i class="bi bi-trash text-secondary" (click)="deleteOne(card.id, deleteContent)"></i></td>
     </tr>
     </tbody>
   </table>
 </div>
-
-<!--<div>
-  <mat-paginato [pageIndex]="0"
-  [pageSize]="50"
-  [pageSizeOptions]="[25, 50, 100, 250]"></mat-paginato>
-</div>-->
 
 <!--Modal fürs Erstellen einer Card-->
 <ng-template #createContent let-modal>
@@ -90,7 +83,7 @@
         <p>Are you sure you want to delete this card?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="deleteOne(card.id)">Yes</button>
-        <button type="button" class="btn btn-dark">Close</button>
+        <button type="button" class="btn btn-danger"(click)="onDelete(card.id)">Yes</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cancel</button>
       </div>
 </ng-template>
