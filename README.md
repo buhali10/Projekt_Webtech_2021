@@ -14,8 +14,8 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
 
 ## Features
 
- - With ***Flashcard Infinitus*** users can easily create, change contents of flashcards, as well as delete your cards. 
- - Users also can search for a keyword which is included in existing cards.
+ - With ***Flashcard Infinitus*** users can easily create, change contents of flashcards, as well as delete their existing cards. 
+ - Users also can search for a string, which is included in existing cards.
  - Learning their cards is very simple with flipping function.
 
 ## Start backend 
