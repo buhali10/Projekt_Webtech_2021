@@ -14,6 +14,14 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
  - [Bootstrap](https://getbootstrap.com) version **v5.0.0-beta3** and
  - [MySQL](https://www.mysql.com).
 
+## Database
+The database is defined with one table, which is named ***"cards"***. Cards has 5 rows: 
+- The **id** column is of type int and will hold an **integer**, which is also the **primary key** of the table.
+- The **front, back, setname,** and **notes** columns are of type **varchar** and will hold characters, and the maximum length for these fields is **255** characters.
+
+![image](https://user-images.githubusercontent.com/57114344/114033902-fb564100-987d-11eb-82bd-c5e6891a9f13.png)
+
+
 ## Features
 
  - With ***Flashcard Infinitus*** users can easily **create, change contents** of flashcards, as well as **delete** their existing cards. 
