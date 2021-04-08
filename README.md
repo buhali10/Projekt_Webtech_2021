@@ -28,14 +28,32 @@ The database is defined with one table, which is named ***"cards"***. ***Cards**
  - Users also can **search** for a string, which is included in existing cards.
  - Learning their cards is very simple with **flipping** function.
 
-## Start backend 
-Navigate your terminal to backend and run: 
+## Set up for frontend
+
+After cloning the projekt with `git clone https://github.com/buhali10/Projekt_Webtech_2021`,
+
+Navigate your terminal to **frontend** file  and run: 
+
+    npm install 
+    npm install -g @angular/cli
+
+
+For a dev server, run `ng serve` . On the console a link `http://localhost:4200/` will appear, click on the link. The app will automatically reload if you change any of the source files.
+
+## Set Up for backend
+Navigate your terminal to **backend** file  and run: 
+
+    npm install express mysql body-parser --save
+
+and start with: 
 
     node server.js
 
-## Start frontend
+It's connected to the database when you see: 
 
-For a dev server, run `ng serve` . Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+> Server is running on port 3000. 
+> Successfully connected to the database.
+
 
 
 ## Build
