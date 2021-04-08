@@ -2,6 +2,7 @@
 
 ## Introduction 
 Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple flashcard web application, which allows users to learn terms/phrases by using flashcards.
+![image](https://user-images.githubusercontent.com/57114344/114031556-c9dc7600-987b-11eb-8765-c4b9f78c1de7.png)
 
 ## Technologies
  ***Flashcards Infinitus*** is created with 
