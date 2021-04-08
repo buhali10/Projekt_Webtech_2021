@@ -13,7 +13,6 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  // @ts-ignore
   table: Card[];
   updateEvent = new EventEmitter<Card[]>();
   form: FormGroup;
@@ -56,7 +55,6 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.service.getAllCard().subscribe((res) =>
     {
       this.table = res;
-      console.log(this.searchString)
       this.table = this.table.filter(card => card.front.includes(this.searchString) || card.back.includes(this.searchString)
         || card.setname.includes(this.searchString) || card.notes.includes(this.searchString));
 
@@ -101,6 +99,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     });
   }
 
+  //change frontend when on create
   onCreate(){
     const values = this.form.value;
     this.card.front = values.frontControl;
@@ -111,6 +110,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.modalService.dismissAll();
   }
 
+  //change frontend when on save
   onSave(){
     const values = this.form.value;
     this.card.front = values.frontControl;

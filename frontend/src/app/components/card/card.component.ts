@@ -46,6 +46,8 @@ export class CardComponent implements OnInit {
   }
 
   onRight(): void {
+    // create a random integer between the specified values.
+    // original formula: Math.floor(Math.random() * (max - min) + min)
     var random = Math.floor(Math.random() * (this.table.length))
     while(random == this.index){
       random = Math.floor(Math.random() * (this.table.length))
