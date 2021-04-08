@@ -3,6 +3,8 @@
 ## Introduction 
 Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple flashcard web application, which allows users to learn terms/phrases by using flashcards.
 
+![image](https://user-images.githubusercontent.com/57114344/114031556-c9dc7600-987b-11eb-8765-c4b9f78c1de7.png)
+
 ## Technologies
  ***Flashcards Infinitus*** is created with 
 
@@ -12,19 +14,46 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
  - [Bootstrap](https://getbootstrap.com) version **v5.0.0-beta3** and
  - [MySQL](https://www.mysql.com).
 
+## Database
+The database is defined with one table, which is named ***"cards"***. ***Cards*** has 5 rows: 
+- The **id** column is of type int and will hold an **integer**, which is also the **primary key** of the table.
+- The **front, back, setname,** and **notes** columns are of type **varchar** and will hold characters, and the maximum length for these fields is **255** characters.
+
+![image](https://user-images.githubusercontent.com/57114344/114033902-fb564100-987d-11eb-82bd-c5e6891a9f13.png)
+
+
 ## Features
 
- - With ***Flashcard Infinitus*** you can easily create, change contents of flashcards, as well as delete your cards. 
- - You can also learn your cards with flipping function.
+ - With ***Flashcard Infinitus*** users can easily **create, change contents** of flashcards, as well as **delete** their existing cards. 
+ - Users also can **search** for a string, which is included in existing cards.
+ - Learning their cards is very simple with **flipping** function.
 
-## Start backend 
-Navigate your terminal to backend and run: 
+## Set up for frontend
+
+After cloning the projekt with `git clone https://github.com/buhali10/Projekt_Webtech_2021`,
+
+Navigate your terminal to **frontend** file  and run: 
+
+    npm install 
+    npm install -g @angular/cli
+
+
+For a dev server, run `ng serve` . On the console a link `http://localhost:4200/` will appear, click on the link. The app will automatically reload if you change any of the source files.
+
+## Set Up for backend
+Navigate another terminal window to **backend** file  and run: 
+
+    npm install express mysql body-parser --save
+
+and start with: 
 
     node server.js
 
-## Start frontend
+It's connected to the database when you see: 
 
-For a dev server, run `ng serve` . Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+> Server is running on port 3000. 
+> Successfully connected to the database.
+
 
 
 ## Build
