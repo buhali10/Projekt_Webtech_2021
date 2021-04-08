@@ -41,7 +41,7 @@ Navigate your terminal to **frontend** file  and run:
 For a dev server, run `ng serve` . On the console a link `http://localhost:4200/` will appear, click on the link. The app will automatically reload if you change any of the source files.
 
 ## Set Up for backend
-Navigate your terminal to **backend** file  and run: 
+Navigate another terminal window to **backend** file  and run: 
 
     npm install express mysql body-parser --save
 
