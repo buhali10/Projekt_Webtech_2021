@@ -30,7 +30,6 @@ export class TableComponent implements OnInit, AfterViewInit {
     private modalService: NgbModal,
     private config: NgbModalConfig,
     private fb: FormBuilder,
-    private router: Router,
 
   ) {
     config.backdrop = 'static';
