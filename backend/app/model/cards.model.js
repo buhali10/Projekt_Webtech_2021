@@ -84,22 +84,10 @@ CARDS.remove = (id, result) => {
             result({ kind: "not_found" }, null);
             return;
         }
-
         console.log("deleted card with id: ", id);
         result(null, res);
     });
 };
 
-CARDS.removeAll = result => {
-    sql.query("DELETE FROM cards", (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-        console.log(`deleted ${res.affectedRows} card`);
-        result(null, res);
-    });
-};
 
 module.exports = CARDS;

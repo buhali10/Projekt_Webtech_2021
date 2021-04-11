@@ -82,12 +82,6 @@ export class TableComponent implements OnInit, AfterViewInit {
     })
   }
 
-  readOne(id: number): void {
-    this.service.getCardById(id).subscribe(
-      (res: Card) => this.card = res,
-    );
-  }
-
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
     this.form.patchValue({
