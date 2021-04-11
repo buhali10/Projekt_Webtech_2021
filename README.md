@@ -15,7 +15,7 @@ Semester Project of winter semester 20/21 ***Flashcard Infinitus*** is a simple 
  - [MySQL](https://www.mysql.com).
 
 ## Database
-The database is defined with one table, which is named ***"cards"***. ***Cards*** has 5 rows: 
+The database is created with MySQL of **HTW Berlin Studi-Server**. Access to the database is saved in a file called **db.config.js**. It is defined with one table, which is named ***"cards"***. Cards has 5 rows: 
 - The **id** column is of type int and will hold an **integer**, which is also the **primary key** of the table.
 - The **front, back, setname,** and **notes** columns are of type **varchar** and will hold characters, and the maximum length for these fields is **255** characters.
 
