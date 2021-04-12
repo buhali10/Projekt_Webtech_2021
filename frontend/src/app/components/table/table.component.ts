@@ -3,7 +3,6 @@ import {Card} from "../../shared/cards";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Component, OnInit, EventEmitter, AfterViewInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 
@@ -54,8 +53,9 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.service.getAllCard().subscribe((res) =>
     {
       this.table = res;
-      this.table = this.table.filter(card => card.front.includes(this.searchString) || card.back.includes(this.searchString)
-        || card.setname.includes(this.searchString) || card.notes.includes(this.searchString));
+      this.table = this.table.filter(card => card.front.includes(this.searchString) ||
+        card.back.includes(this.searchString) || card.setname.includes(this.searchString)
+        || card.notes.includes(this.searchString));
 
     })
   }

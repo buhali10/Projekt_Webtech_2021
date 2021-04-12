@@ -42,7 +42,6 @@ export class CardComponent implements OnInit {
     }
     this.index = random
     this.initCard();
-
   }
 
   onRight(): void {
